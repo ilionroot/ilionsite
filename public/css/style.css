@@ -1,0 +1,234 @@
+body {
+    background-color: rgb(235,235,235);
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.top {
+    display: flex;
+    position:fixed;
+
+    align-items: center; /* Alinha verticalmente */
+    justify-content: left;
+    flex-direction: row;
+
+    width: 100%;
+    height: 45px;
+
+    background-color: lightgray;
+
+    top: 0;
+    left: 0;
+
+    z-index: 2;
+}
+
+.top img {
+    margin-left: 15px;
+}
+
+#cadastrarForm {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background-color: white;
+
+    border: lightgray solid 1px;
+    border-radius: 20px;
+
+    width: 50%;
+    height: 70%;
+}
+
+#cadastrarForm input[type=submit] {
+    width: 72%;
+    height: 35px;
+
+    border-radius: 10px;
+    border: none;
+
+    outline: none;
+    transition: .1s ease;
+}
+
+#cadastrarForm input[type=submit]:hover {
+    -moz-transform: scale(1.03);
+    -o-transform: scale(1.03);
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+
+    background-color: lightseagreen;
+}
+
+#cadastrarForm input:not([type=submit]) {
+    width: 67.5%;
+
+    border: none;
+    border-radius: 3px;
+
+    outline: none;
+    padding-left: 10px;
+    padding-bottom: 10px;
+
+    border-bottom: gray solid 1px;
+}
+
+#cadastrarForm textarea {
+    padding:10px;
+}
+
+#cadastrarDiv {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    background-color: snow;
+}
+
+.top ul li {
+    list-style: none;
+    display: inline;
+
+    margin-left: 45px;
+}
+
+.top ul li a {
+    text-decoration: none;
+    color: rgb(85,85,85);
+}
+
+.top ul li a:hover {
+    color: black;
+}
+
+.menu {
+    display: none;
+    position: fixed;
+
+    top: 1.75%;
+    right: 3%;
+
+    cursor: pointer;
+
+    z-index: 101;
+}
+
+.efeito .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    -o-transform: rotate(-45deg) translate(-9px, 6px);
+    -moz-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+    background-color: black;
+}
+
+.efeito .bar2 {
+    opacity: 0;
+    background-color: black;
+}
+
+.efeito .bar3 {
+    -webkit-transform: rotate(45deg) translate(-4px, -3px);
+    -o-transform: rotate(45deg) translate(-4px, -3px);
+    -moz-transform: rotate(45deg) translate(-4px, -3px);
+    transform: rotate(45deg) translate(-4px, -3px);
+    background-color: black;
+}
+
+.bar1,.bar2,.bar3 {
+    height: 5px;
+    width: 30px;
+
+    margin-bottom: 3px;
+
+    background-color: black;
+
+    transition: .3s ease-in-out;
+}
+
+.lat {
+    z-index: 100;
+
+    position: fixed;
+    float: right;
+    top: 0;
+    right: 0;
+
+    background-color: snow;
+
+    width: 0;
+    height: 100vh;
+
+    transition: .4s ease-in-out;
+}
+
+.lat ul li {
+    list-style: none;
+    margin-top: 80px;
+}
+
+.lat ul li a{
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    color: rgb(85,85,85);
+    transition: .1s ease;
+}
+
+.lat ul li a:hover {
+    color: black;
+}
+
+.crescer {
+    width: 150px;
+}
+
+#tudo {
+    z-index: 1;
+}
+
+.escurecer {
+    z-index: -1;
+    background-color: black;
+    opacity: 0;
+    
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    transition: .3s;
+}
+
+.escurecer1 {
+    z-index: 99;
+    opacity: 0.65;
+}
+
+@media only screen and (max-width: 768px) {
+    .op {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .top {
+        justify-content: space-between;
+    }
+}
