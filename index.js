@@ -160,4 +160,6 @@ const flash = require('connect-flash');
             })
         });
 
-app.listen(3000, function() { console.log("Servidor rodando!"); });
+app.listen(3000, function() {
+    console.log("Servidor rodando!");
+});
