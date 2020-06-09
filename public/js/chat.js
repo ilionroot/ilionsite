@@ -15,18 +15,6 @@ function renderMessages(message) {
     msg++;
 }
 
-function gera_cor(){
-    var hexadecimais = '0123456789ABCDEF';
-    var cor = '#';
-  
-    // Pega um número aleatório no array acima
-    for (var i = 0; i < 6; i++ ) {
-    //E concatena à variável cor
-        cor += hexadecimais[Math.floor(Math.random() * 16)];
-    }
-    return cor;
-}
-
 socket.on('previousMessages', messages => {
     for (message of messages) {
         renderMessages(message);
