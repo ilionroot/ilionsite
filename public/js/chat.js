@@ -1,4 +1,4 @@
-var socket = io('/chat');
+var socket = io('/');
 
 var msg = 0;
 
