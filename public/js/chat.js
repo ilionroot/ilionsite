@@ -1,4 +1,4 @@
-var socket = io('ws://devilion-com.umbler.net/chat/:3000');
+var socket = io('/');
 
 var msg = 0;
 
