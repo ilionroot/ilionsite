@@ -1,0 +1,119 @@
+<style>
+    .chatDiv {
+        display: flex;
+        position: absolute;
+        flex-direction: row;
+
+        align-items: center;
+        justify-content: center;
+
+        height: 100%;
+        width: 100%;
+
+        top: 0;
+        left: 0;
+
+        background-color: snow;
+
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .chatForm {
+        padding: 25px;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        background-color: rgb(156, 168, 180); 
+
+        box-shadow: orange 0 0 25px;
+
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+
+        position: absolute;
+        top:0;
+
+        width: 75%;
+        height: 80%;
+    }
+
+    .chatForm input {
+        width: 30%;
+
+        margin-bottom: 20px;
+
+        border:none;
+        border-radius: 2px;
+        color: black;
+        background-color: transparent;
+
+        border-bottom: gray solid 1px;
+
+        padding: 5px;
+
+        outline: none;
+    }
+
+    .chatForm button {
+        border: none;
+        border-radius: 10px;
+
+        width: 75%;
+        height: 30px;
+
+        outline: none;
+        transition: .1s ease;
+    }
+
+    .chatForm button:hover {
+        -moz-transform: scale(1.03);
+        -o-transform: scale(1.03);
+        -webkit-transform: scale(1.03);
+        transform: scale(1.03);
+
+        background-color: lightseagreen;
+    }
+
+    .messages {
+        width: 75%;
+        height: 65%;
+        background-color: white;
+
+        padding: 10px;
+
+        border-radius: 10px;
+
+        overflow: scroll;
+    }
+
+    .message {
+        transition: .2s ease-in-out;
+        opacity: 0;
+        transform: translate3d(-100px, 0, 0);
+        font-size: 15px;
+    }
+
+    input[name=username] {
+        text-align: center;
+        
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        font-size: 30px;
+    }
+</style>
+
+<div class="chatDiv">
+    <form class="chatForm" id="chat">
+        <br><br>
+        <input type="text" name="username" value={{apelido}} readonly="readonly">
+        <div class="messages"></div>
+        <input style="margin-top: 15px; width: 75%;" name="message" type="text" placeholder="Digite sua mensagem">
+        <button type="submit">Enviar chat</button>
+    </form>
+</div>
+
+<script src="/js/chat.js"></script>

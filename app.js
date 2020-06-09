@@ -1,9 +1,16 @@
 const express = require('express');
 const app = express();
+
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
+
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
+
+const crypt = require('./crip');
 const Post = require('./models/Post');
 const User = require('./models/Usuario');
+
 const bcrypt = require('bcrypt');
 const path = require('path');
 
@@ -11,6 +18,19 @@ const session = require('express-session');
 const flash = require('connect-flash');
 
 // Config
+    // Web Socket
+        let messages = [];
+
+        io.on('connection', socket => {
+            console.log('socket conectado, id: ' + socket.id);
+
+            socket.emit('previousMessages', messages);
+
+            socket.on('sendMessage', data => {
+                messages.push(data);
+                socket.broadcast.emit('receivedMessage', data);
+            });
+        });
     // Sessão
         app.use(session({
             secret: "eugostodecomeresterco",
@@ -32,8 +52,7 @@ const flash = require('connect-flash');
 
     // Body Parser
           app.use(bodyParser.urlencoded({ extended: false }));
-          app.use(bodyParser.json());   
-
+          app.use(bodyParser.json());
     // Public (Arquivos estáticos)
         app.use(express.static(path.join(__dirname, "public")))
 // Rotas
@@ -160,8 +179,28 @@ const flash = require('connect-flash');
             })
         });
 
+        app.get('/set_apelido', (req, res) => {
+            res.render('set_apelido');
+        });
+
+        app.post('/set_apelido', async function(req, res) {
+            var apelido = req.body.apelido;
+
+            var apelidoc = await crypt.codi(apelido);
+
+            res.redirect('/chat/' + apelidoc);
+        })
+
+        app.get('/chat/:apelido', async (req, res) => {
+            const apelido = await crypt.deco(req.params.apelido);
+
+            res.render('chat', {
+                apelido: apelido
+            });
+        });
+
 var port = process.env.PORT || 3000;
 
-app.listen(port, function() {
+server.listen(port, function() {
     console.log("Servidor rodando!");
 });
