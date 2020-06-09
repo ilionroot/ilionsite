@@ -2,6 +2,10 @@ var socket = io('/');
 
 var msg = 0;
 
+function scroll(tempo) {
+    $(".messages").stop().animate({ scrollTop: $(".messages")[0].scrollHeight}, tempo);
+}
+
 function renderMessages(message) {
     $('.messages').append('<div id="' + msg + '" class="message"><strong>' + message.author + '</strong>: ' + message.message);
     
@@ -19,10 +23,13 @@ socket.on('previousMessages', messages => {
     for (message of messages) {
         renderMessages(message);
     }
+
+    scroll(250);
 });
 
 socket.on('receivedMessage', data => {
     renderMessages(data);
+    scroll(1000);
 });
 
 $('#chat').submit(function(event) {
@@ -43,4 +50,6 @@ $('#chat').submit(function(event) {
 
         $('input[name=message]').val("");
     }
+
+    scroll(1000);
 });
