@@ -29,6 +29,7 @@ const flash = require('connect-flash');
             socket.on('sendMessage', data => {
                 messages.push(data);
                 console.log(data);
+                console.log(messages)
                 socket.broadcast.emit('receivedMessage', data);
             });
         });
