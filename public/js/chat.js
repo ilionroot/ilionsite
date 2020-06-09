@@ -1,4 +1,4 @@
-var socket = io('http://devilion-com.umbler.net:3000');
+var socket = io('http://localhost:3000');
 
 var msg = 0;
 
