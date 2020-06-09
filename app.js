@@ -33,6 +33,10 @@ const flash = require('connect-flash');
                 console.log(messages)
                 socket.broadcast.emit('receivedMessage', data);
             });
+
+            socket.on('disconnect', function() {
+                console.log('user ' + socket.id + ' desconectado!');
+            });
         });
     // Sessão
         app.use(session({
@@ -202,8 +206,6 @@ const flash = require('connect-flash');
             });
         });
 
-var port = process.env.PORT || 3000;
-
-server.listen(port, function() {
+server.listen(3000, function() {
     console.log("Servidor rodando!");
 });
